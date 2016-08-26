@@ -7,8 +7,8 @@ run_analysis <- function(Zip_file_url="https://d396qusza40orc.cloudfront.net/get
   library(reshape2)
   
 # download and unzip data in working directory  
-#  download.file(Zip_file_url,"./data.zip")
-#  unzip("./data.zip")
+  download.file(Zip_file_url,"./data.zip")
+  unzip("./data.zip")
 
 #get the paths to data files 
     #Links the class labels with their activity name
@@ -60,7 +60,7 @@ final_data <- summarise(group_by(molten_data,activity,subject,variable), mean(va
 names(final_data)<-c("activity","subject","feature","average value")
 
 #write tidy data to file and View it
-write.table(final_data,"./tidy_data.txt")
+write.table(final_data,"./tidy_data.txt",row.names = FALSE)
 View(final_data)
 
 }
